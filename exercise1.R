@@ -1,2 +1,15 @@
 setwd("C:\Users\timon\Documents\R\SDA\ass2")
 source("sample2020.txt")
+
+seq(0.05,1,length(t3))
+plot(normal,t3)
+snormal <- dnorm(x,mean=0,sd=1)
+plot(x,snormal)
+n=100
+uni<-dunif(x,min=1,max=2)
+plot(uni,snormal)
+t10<-dt(x,10)
+log<-dlnorm(x,meanlog = 0.1,sdlog = 0.4)
+plot(t10)
+plot(log)
+plot(t10,log)
