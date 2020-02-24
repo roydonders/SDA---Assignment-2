@@ -81,9 +81,10 @@ plot_sample_size_SW = function(sampl, title="", color="black"){
     i = x-49
     y_pvalue[i] = swtest_samplesize(sampl,x)
   }
-  plot(x_samplesize,y_pvalue, xlab="Sample Size", ylab="P-Value SW-Test", ylim = c(0.0,max(y_pvalue)), main = title, col = color)
+  plot(x_samplesize,y_pvalue, xlab="Sample Size", ylab="P-Value (SW-Test)", ylim = c(0.0,max(y_pvalue)), main = title, col = color)
+  lines(x_samplesize, y_pvalue)
 }
 
 par(mfrow=c(1,2), pty="m")
-plot_sample_size_SW(calfgirths, "SW-Test nog iets moois maken Calf Girths")
-plot_sample_size_SW(anklegirths, "blah blah Ankle Girths")
+plot_sample_size_SW(calfgirths, "Scatterplot of Calf Girth size and SW-Test values","darkorange3")
+plot_sample_size_SW(anklegirths, "Scatterplot of Ankle Girth size and SW-Test values","darkcyan")
