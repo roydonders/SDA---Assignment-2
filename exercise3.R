@@ -1,20 +1,20 @@
-custom_qqline <- function(y, datax = FALSE, distribution = qnorm,
-                          probs = c(0.25, 0.75), qtype = 7, ...)
-{
-  stopifnot(length(probs) == 2, is.function(distribution))
-  y <- quantile(y, probs, names=FALSE, type=qtype, na.rm = TRUE)
-  x <- distribution(probs)
-  if (datax) {
-    slope <- diff(x)/diff(y)
-    int <- x[1L] - slope*y[1L]
-  } else {
-    slope <- diff(y)/diff(x)
-    int <- y[1L]-slope*x[1L]
-  }
-  abline(int, slope, ...)
-}
-
-
+# custom_qqline <- function(y, datax = FALSE, distribution = qnorm,
+#                           probs = c(0.25, 0.75), qtype = 7, ...)
+# {
+#   stopifnot(length(probs) == 2, is.function(distribution))
+#   y <- quantile(y, probs, names=FALSE, type=qtype, na.rm = TRUE)
+#   x <- distribution(probs)
+#   if (datax) {
+#     slope <- diff(x)/diff(y)
+#     int <- x[1L] - slope*y[1L]
+#   } else {
+#     slope <- diff(y)/diff(x)
+#     int <- y[1L]-slope*x[1L]
+#   }
+#   abline(int, slope, ...)
+# }
+# 
+# deze bovenstaande code moet NIET in het eindverslag komen
 
 setwd("C:/Users/timon/SDA---Assignment-2")
 
@@ -83,8 +83,9 @@ plot_sample_size_SW = function(sampl, title="", color="black"){
   }
   plot(x_samplesize,y_pvalue, xlab="Sample Size", ylab="P-Value (SW-Test)", ylim = c(0.0,max(y_pvalue)), main = title, col = color)
   lines(x_samplesize, y_pvalue)
+  abline(h = 0.05)
 }
 
 par(mfrow=c(1,2), pty="m")
-plot_sample_size_SW(calfgirths, "Scatterplot of Calf Girth size and SW-Test values","darkorange3")
-plot_sample_size_SW(anklegirths, "Scatterplot of Ankle Girth size and SW-Test values","darkcyan")
+plot_sample_size_SW(calfgirths, "Scatterplot of Calf Girth sample size and SW-Test values","darkorange3")
+plot_sample_size_SW(anklegirths, "Scatterplot of Ankle Girth sample size and SW-Test values","darkcyan")
