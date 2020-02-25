@@ -30,4 +30,7 @@ chisq.test(z,y_gamma)
 chisq.test(z)
 chisq.test(y_gamma)
 
-           
+#z is normal vergelijken met gamma, alleen krijg hier NAN bij de chisquare
+chisquare(z,pnorm,10,0,5,y_gamma)
+#hier zijn alle nps <5
+chisquare(z,pnorm,10,0,5,pgamma(x_gamma,shape = 2.1,scale = 1.8))
