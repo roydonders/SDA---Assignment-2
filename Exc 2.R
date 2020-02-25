@@ -1,4 +1,5 @@
 setwd("C:/Users/Ka-Ho/Documents/R/R Workspace/SDA")
+setwd("C:/Users/timon/SDA---Assignment-2")
 source("sample2020.txt")
 source("functions_Ch3.txt")
 
@@ -14,13 +15,16 @@ qqlaplace(z,pch=20,col="blue",cex=1)
 qqline(z)
 abline(3.28,1.635, col="yellow")
 
-gammsa<-(qgamma(seq(0,1,by=.01),2.1,scale = 1.8))
-ks.test(z,qgamma(seq(0,1,by=.01),2.1,scale = 1.8))
-plot(z,gammsa)
-chisq.test(z,(qgamma(seq(0,0.79,by=.01),2.1,scale = 1.8)))
-qqplot(z,(qgamma(seq(0,0.79,by=.01),2.1,scale = 1.8)))
+zlength = length(z)
+x_gamma = seq(0,1,length.out = zlength)
+y_gamma = qgamma(x_gamma, 2.1, scale = 1.8)
+ks.test(z,y_gamma)
+plot(z,y_gamma)
 
-chisq.test(z,(qgamma(seq(0,0.79,by=.01),2.1,scale = 1.8)))
+chisq.test(z,y_gamma)
+qqplot(z,y_gamma)
+
+chisq.test(z,y_gamma)
 chisq.test(z)
 
 
