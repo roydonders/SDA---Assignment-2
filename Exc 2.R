@@ -15,12 +15,12 @@ qqline(z)
 abline(3.28,1.635, col="yellow")
 
 gammsa<-(qgamma(seq(0,1,by=.01),2.1,scale = 1.8))
-ks.test(z,qgamma(x,2.1,scale = 1.8))
+ks.test(z,qgamma(seq(0,1,by=.01),2.1,scale = 1.8))
 plot(z,gammsa)
 chisq.test(z,(qgamma(seq(0,0.79,by=.01),2.1,scale = 1.8)))
 qqplot(z,(qgamma(seq(0,0.79,by=.01),2.1,scale = 1.8)))
 
-chisq.test(b,(qgamma(seq(0,0.79,by=.01),2.1,scale = 1.8)))
+chisq.test(z,(qgamma(seq(0,0.79,by=.01),2.1,scale = 1.8)))
 chisq.test(z)
 
 
