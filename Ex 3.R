@@ -23,3 +23,22 @@ IQR_31 = IQR(sample31)/1.34
 
 min_sd = min(sd(sample31), IQR_31)
 multi_bw = (4*pi)^(-1/10)*(3/8*pi^(-1/2))^(-1/5) * min_sd * length(sample31)^(-1/5)
+e10771
+
+SWvalues=numeric(1000)
+for (i in 1:1000)
+{
+  x=rnorm(90)
+  SWvalues[i]=shapiro.test(x)[[1]]
+}
+par(mfrow=c(1,1),pty="s")
+hist(SWvalues, col="deeppink1", main="Histogram of (Simulated) W-Values under H0")
+
+shapiro.test(sample31)
+par(mfrow=c(2,3),pty="s")
+plot(density(c(sample31),bw= multi_bw))
+plot(density(c(sample31),bw= multi_bw/1.2))
+plot(density(c(sample31),bw= multi_bw/1.5))
+plot(density(c(sample31),bw= multi_bw/1.6))
+plot(density(c(sample31),bw= multi_bw/2))
+plot(density(c(sample31),bw= multi_bw/4))
