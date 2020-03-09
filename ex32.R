@@ -3,28 +3,22 @@ source("functions_Ch4.txt")
 data32 = read.table("sample32.txt")
 sample32 = c(data32$V1,data32$V2,data32$V3,data32$V4,data32$V5)
 
-# logkde = function(data, bandw, kernl="gaussian"){
-#   logdata = log(data)
-#   d = density(logdata, bw=as.numeric(bandw), kernel=kernl)
-#   lkde = approxfun(d)
-#   return(lkde) 
-# }
-# 
-# kdefunction_applylog = function(data, bw, kernel="gaussian"){
-#   fhaty = logkde(data, bandw=bw, kernl=kernel)
-#   fhatx = function(t){(1/t)*fhaty(log(t))}
-#   return(fhatx)
-# }
 library(logKDE)
-
+ld1 = logdensity(sample32)
 h = h_opt(sample32)
-fhat = kdefunction_applylog(sample32,h)
-# logdensity werkt prima
-# oude methode benaderde te veel gebruikmakend van approxfun
+ld2 = logdensity(sample32, bw = h*3)
+ld3 = logdensity(sample32, bw = h*2)
+ld4 = logdensity(sample32, bw = h*1.5)
+ld5 = logdensity(sample32, bw = h*1.25)
+ld6 = logdensity(sample32, bw = h)
 
-# logdensityestimate = function(data, dens_func){
-#   logdata = log(data)
-#   logdse = dens_func(logdata)
-#   dse = 1/ # dit werkt niet want var t
-#   return()
-# }
+par(mfrow=c(1,1))
+hist(sample32, prob=T, xlab="Observation", col="maroon1")
+
+par(mfrow=c(2,3))
+plot(ld1, col="maroon3", main="Log-KDE for sample32, standard R bandwidth")
+plot(ld2, col="maroon3", main="Log-KDE for sample32, bandwidth = h_opt*3")
+plot(ld3, col="maroon3", main="Log-KDE for sample32, bandwidth = h_opt*2")
+plot(ld4, col="maroon3", main="Log-KDE for sample32, bandwidth = h_opt*1.5")
+plot(ld5, col="maroon3", main="Log-KDE for sample32, bandwidth = h_opt*1.25")
+plot(ld6, col="maroon3", main="Log-KDE for sample32, bandwidth = h_opt")
