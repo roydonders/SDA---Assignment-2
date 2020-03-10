@@ -2,7 +2,6 @@ setwd("C:/Users/timon/SDA---Assignment-2")
 source("functions_Ch4.txt")
 data32 = read.table("sample32.txt")
 sample32 = c(data32$V1,data32$V2,data32$V3,data32$V4,data32$V5)
-
 library(logKDE)
 ld1 = logdensity(sample32)
 h = h_opt(sample32)
@@ -11,10 +10,8 @@ ld3 = logdensity(sample32, bw = h*2)
 ld4 = logdensity(sample32, bw = h*1.5)
 ld5 = logdensity(sample32, bw = h*1.25)
 ld6 = logdensity(sample32, bw = h)
-
 par(mfrow=c(1,1))
 hist(sample32, prob=T, xlab="Observation", col="maroon1")
-
 par(mfrow=c(2,3))
 plot(ld1, col="maroon3", main="Log-KDE for sample32, standard R bandwidth")
 plot(ld2, col="maroon3", main="Log-KDE for sample32, bandwidth = h_opt*3")
