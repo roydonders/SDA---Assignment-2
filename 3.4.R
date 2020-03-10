@@ -15,6 +15,7 @@ x = t_sample
 #kurtosis functie
 kurt = function(x) {(n* sum((x-mean(x))^4)/(sum((x-mean(x))^2)^2))-3
 }
+
 kurt(x)
 kurtosis(x,type=1)
 
@@ -33,13 +34,16 @@ k = 2*s^2 / (s^2 - 1)
 #empBS = boot(t_sample,statistic = emp_function(),R=1000)
 #parBS = boot(t_sample,statistic = par_function, R=1000)
 
-hist(parBS)
 
 #bootstrap
-B=1000
-empBS = numeric(B)
-for(i in 1:B){
-  emp=sample(x[], replace = TRUE)
-  empBS[i] = kurtosis(emp)
-}
+#B=1000
+#empBS = numeric(B)
+#for(i in 1:B){
+ # emp=sample(x[], replace = TRUE)
+ # empBS[i] = kurtosis(emp)
+#}
+
+empBS = bootstrap(x,kurtosis,B=1000)
 hist(empBS)
+
+#hist(parBS)
