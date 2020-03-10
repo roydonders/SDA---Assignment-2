@@ -26,34 +26,22 @@ s = var(t_sample)
 #degree of freedom
 k = 2*s / (s - 1)
 
-#set.seed(120)
-#index = sample(x,120,replace = TRUE)
-
-
-#emp_function = function(x,index){diff(kurtosis(x),kurtosis(index))}
-#par_function = dt(t_sample, df = k)
-
-#empBS = boot(t_sample,statistic = emp_function(),R=1000)
-#parBS = boot(t_sample,statistic = par_function, R=1000)
-
-
 #bootstrap
-B=1000
-empBSx = numeric(B)
-for(i in 1:B){
-  emp=sample(x[], replace = TRUE)
-  empBSx[i] = kurtosis(emp)
-}
-hist(empBSx)
+#B=1000
+#empBSx = numeric(B)
+#for(i in 1:B){
+ # emp=sample(x[], replace = TRUE)
+ # empBSx[i] = kurtosis(emp)
+#}
+#hist(empBSx)
 
 empBS = bootstrap(x,kurtosis,B=1000)
 
 par(mfrow=c(1,1),pty="s")
-hist(empBS)
+hist(empBS,main = "Histogram of empBS with excess kurtosis")
 abline(v=k_t_sample,col="red")
-hist(empBS)
+hist(empBS,main = "Histogram of empBS with true kurtosis = 1")
 abline(v=1,col="red")
-
 var(empBS)
 
 parBS = numeric(B)
@@ -64,8 +52,8 @@ for(i in 1:B){
 
 hist(parBS)
 par(mfrow=c(1,1),pty="s")
-hist(parBS)
+hist(parBS,main = "Histogram of parBS with excess kurtosis")
 abline(v=k_t_sample,col="red")
-hist(parBS)
+hist(parBS,main = "Histogram of parBS with true kurtosis = 1")
 abline(v=1,col="red")
-
+var(parBS)
