@@ -1,5 +1,6 @@
 getwd()
 setwd("/Users/Ko/Documents/SDA---Assignment-2")
+#setwd("C:/Users/timon/SDA---Assignment-2")
 data_t = read.table("t-sample.txt")
 source("functions_Ch4.txt")
 source("functions_Ch5.txt")
@@ -28,32 +29,33 @@ k = 2*s / (s - 1)
 
 #bootstrap
 #B=1000
-#empBSx = numeric(B)
+#empBS_TStarx = numeric(B)
 #for(i in 1:B){
  # emp=sample(x[], replace = TRUE)
- # empBSx[i] = kurtosis(emp)
+ # empBS_TStarx[i] = kurtosis(emp)
 #}
-#hist(empBSx)
+#hist(empBS_TStarx)
 
-empBS = bootstrap(x,kurtosis,B=1000)
+empBS_TStar = bootstrap(x,kurtosis,B=1000)
 
 par(mfrow=c(1,1),pty="s")
-hist(empBS,main = "Histogram of empBS with excess kurtosis")
+hist(empBS_TStar,main = "Histogram of empBS_TStar with excess kurtosis")
 abline(v=k_t_sample,col="red")
-hist(empBS,main = "Histogram of empBS with true kurtosis = 1")
+hist(empBS_TStar,main = "Histogram of empBS_TStar with true kurtosis = 1")
 abline(v=1,col="red")
-var(empBS)
+var(empBS_TStar)
 
-parBS = numeric(B)
+B = 1000
+parBS_TStar = numeric(B)
 for(i in 1:B){
-  par= rt(x,k)
-  parBS[i] = kurtosis(par)
+  xstar= rt(x,k)
+  parBS_TStar[i] = kurtosis(xstar)
 }
 
-hist(parBS)
+hist(parBS_TStar)
 par(mfrow=c(1,1),pty="s")
-hist(parBS,main = "Histogram of parBS with excess kurtosis")
+hist(parBS_TStar,main = "Histogram of parBS_TStar with excess kurtosis")
 abline(v=k_t_sample,col="red")
-hist(parBS,main = "Histogram of parBS with true kurtosis = 1")
+hist(parBS_TStar,main = "Histogram of parBS_TStar with true kurtosis = 1")
 abline(v=1,col="red")
-var(parBS)
+var(parBS_TStar)
