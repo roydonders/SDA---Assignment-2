@@ -20,14 +20,26 @@ kurtosis(x,type=1)
 
 n = length(t_sample)
 s = var(t_sample) 
+#degree of freedom
 k = 2*s^2 / (s^2 - 1)
 
-#emp_function = function(y=x, i){kurt(i)}
+#set.seed(120)
+#index = sample(x,120,replace = TRUE)
 
+
+#emp_function = function(x,index){diff(kurtosis(x),kurtosis(index))}
 #par_function = dt(t_sample, df = k)
 
 #empBS = boot(t_sample,statistic = emp_function(),R=1000)
 #parBS = boot(t_sample,statistic = par_function, R=1000)
 
-hist(empBS)
 hist(parBS)
+
+#bootstrap
+B=1000
+empBS = numeric(B)
+for(i in 1:B){
+  emp=sample(x[], replace = TRUE)
+  empBS[i] = kurtosis(emp)
+}
+hist(empBS)
