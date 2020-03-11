@@ -1,8 +1,8 @@
 setwd("/Users/Ko/Documents/SDA---Assignment-2")
 source("functions_Ch3.txt")
 source("functions_Ch5.txt")
-data31 = read.table("birthweight.txt")
-bw = c(data31$V1)
+databw = read.table("birthweight.txt")
+bw = c(databw$V1)
 hist(bw)
 median(bw)
 
@@ -23,4 +23,4 @@ for(i in 1:B){
   pbw_TStar[i] = median(pxstar)
 }
 hist(pbw_TStar)
-sd(pbw_TStar) #sd is heel laag(ERROR lecture 5)
+sd(pbw_TStar) #sd is heel laag mss klopt niet(ERROR lecture 5)
