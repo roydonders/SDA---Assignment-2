@@ -36,10 +36,10 @@ hist(SWvalues, col="deeppink1", main="Histogram of (Simulated) W-Values under H0
 
 shapiro.test(sample31)
 par(mfrow=c(2,3),pty="s")
-plot(density(c(sample31),bw= multi_bw), col="red",main="Multimodal, standard R bandwidth")
-plot(density(c(sample31),bw= multi_bw/1.2),col="red",main="Multimodal, bandwidth = h_opt/1.2")
-plot(density(c(sample31),bw= multi_bw/1.5),col="red",main="Multimodal, bandwidth = h_opt/1.5")
-plot(density(c(sample31),bw= multi_bw/1.6),col="red",main="Multimodal, bandwidth = h_opt/1.6")
-plot(density(c(sample31),bw= multi_bw/2),col="red",main="Multimodal, bandwidth = h_opt/2")
-plot(density(c(sample31),bw= multi_bw/4),col="red",main="Multimodal, bandwidth = h_opt/4")
+plot(density(c(sample31),bw= multi_bw), col="red",main="KDE sample31, bandwidth = h_opt")
+plot(density(c(sample31),bw= multi_bw/1.2),col="red",main="KDE sample31, bandwidth = h_opt/1.2")
+plot(density(c(sample31),bw= multi_bw/1.5),col="red",main="KDE sample31, bandwidth = h_opt/1.5")
+plot(density(c(sample31),bw= multi_bw/1.6),col="red",main="KDE sample31, bandwidth = h_opt/1.6")
+plot(density(c(sample31),bw= multi_bw/2),col="red",main="KDE sample31, bandwidth = h_opt/2")
+plot(density(c(sample31),bw= multi_bw/4),col="red",main="KDE sample31, bandwidth = h_opt/4")
 
