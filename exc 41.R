@@ -7,10 +7,10 @@ hist(bw)
 median(bw)
 
 #unknown distribution so emperical bootstrap
-B=1000
+B=100000
 ebw_TStar = numeric(B)
 for(i in 1:B){
-  exstar= sample(bw[],replace = TRUE)
+  exstar= sample(bw,replace = TRUE)
   ebw_TStar[i] = median(exstar)
 }
 hist(ebw_TStar)
@@ -19,8 +19,10 @@ sd(ebw_TStar)
 #parametric bootstrap
 pbw_TStar = numeric(B)
 for(i in 1:B){
-  pxstar = rexp(bw[],rate = (1+ mean(bw)))
+  pxstar = rexp(bw,rate = (1/mean(bw)))
   pbw_TStar[i] = median(pxstar)
 }
 hist(pbw_TStar)
 sd(pbw_TStar) #sd is heel laag mss klopt niet(ERROR lecture 5)
+
+
