@@ -1,4 +1,5 @@
 setwd("/Users/Ko/Documents/SDA---Assignment-2")
+setwd("C:/Users/timon/SDA---Assignment-2")
 source("functions_Ch3.txt")
 source("functions_Ch5.txt")
 source("thromboglobulin.txt")
@@ -8,6 +9,7 @@ SDRP = thromboglobulin$SDRP
 CTRP = thromboglobulin$CTRP
 
 B=10000
+hist(PRRP)
 ePRRP_TStar = numeric(B)
 for(i in 1:B){
   ePRRP_xstar = sample(PRRP,replace = TRUE)

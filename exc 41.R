@@ -1,4 +1,5 @@
 setwd("/Users/Ko/Documents/SDA---Assignment-2")
+setwd("C:/Users/timon/SDA---Assignment-2")
 source("functions_Ch3.txt")
 source("functions_Ch5.txt")
 databw = read.table("birthweight.txt")
@@ -27,4 +28,3 @@ hist(pbw_TStar)
 sd(pbw_TStar) #sd is heel laag mss klopt niet(ERROR lecture 5)
 
 #one-line-code for sd
-sd(replicate(1000,median(rexp(bw,rate = (1/mean(bw))))))
