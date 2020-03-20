@@ -9,7 +9,6 @@ SDRP = thromboglobulin$SDRP
 CTRP = thromboglobulin$CTRP
 
 B=10000
-hist(PRRP)
 ePRRP_TStar = numeric(B)
 for(i in 1:B){
   ePRRP_xstar = sample(PRRP,replace = TRUE)

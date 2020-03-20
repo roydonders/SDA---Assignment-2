@@ -27,4 +27,6 @@ for(i in 1:B){
 hist(pbw_TStar)
 sd(pbw_TStar) #sd is heel laag mss klopt niet(ERROR lecture 5)
 
+<<<<<<< Updated upstream
 #one-line-code for sd
+sd(replicate(1000,median(rexp(bw,rate = (1/mean(bw))))))
