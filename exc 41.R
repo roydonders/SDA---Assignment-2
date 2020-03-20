@@ -3,11 +3,12 @@ source("functions_Ch3.txt")
 source("functions_Ch5.txt")
 databw = read.table("birthweight.txt")
 bw = c(databw$V1)
+par(mfrow =c(1,1),pty="s")
 hist(bw)
 median(bw)
 
 #unknown distribution so emperical bootstrap
-B=100000
+B=1000
 ebw_TStar = numeric(B)
 for(i in 1:B){
   exstar= sample(bw,replace = TRUE)
@@ -25,4 +26,5 @@ for(i in 1:B){
 hist(pbw_TStar)
 sd(pbw_TStar) #sd is heel laag mss klopt niet(ERROR lecture 5)
 
-
+#one-line-code for sd
+sd(replicate(1000,median(rexp(bw,rate = (1/mean(bw))))))
