@@ -65,6 +65,10 @@ second_d=c(Tn_d-quantile(diff_zstar,0.025))
 abline(v=first_d,col="dark blue")
 abline(v=second_d,col="dark blue")
 
+hist(PRRP, prob=T)
+abline(v = c(50.766, 70.407), col="orange")
+abline(v = c(39.75, 64.25), col="dark blue")
+
 diff2_SDRP_PRRP = numeric(B)
 for(i in 1:B){
   mSDRP2_xstar = sample(SDRP,replace = TRUE)
