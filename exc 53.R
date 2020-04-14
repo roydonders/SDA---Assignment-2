@@ -1,5 +1,5 @@
-setwd("/Users/Ko/Documents/SDA---Assignment-2")
-#setwd("C:/Users/timon/SDA---Assignment-2")
+#setwd("/Users/Ko/Documents/SDA---Assignment-2")
+setwd("C:/Users/timon/SDA---Assignment-2")
 source("functions_Ch3.txt")
 source("functions_Ch5.txt")
 newcomb = matrix(scan("newcomb.txt"))
