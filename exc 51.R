@@ -11,3 +11,6 @@ grades==6.5
 t = sum(grades>6.5)
 binom.test(t,n,alternative = "g")
 binom.test(t,n,alternative = "l")
+
+k = sum(grades>=7)
+binom.test(k,n,alternative = "l")
