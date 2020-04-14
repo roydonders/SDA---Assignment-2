@@ -6,23 +6,29 @@ newcomb = matrix(scan("newcomb.txt"))
 f_newcomb = newcomb[1:20]
 s_newcomb = newcomb[21:66]
 
-par(mfrow =c(2,2),pty="s")
+par(mfrow =c(1,4),pty="s")
 summary(newcomb)
-hist(newcomb)
+hist(newcomb, xlim=c(-50,50), ylim=c(0,0.1), prob=T)
 qqnorm(newcomb)
 qqline(newcomb)
-boxplot(newcomb)
+boxplot(newcomb, main="Boxplot of newcomb")
+
 
 par(mfrow =c(2,3),pty="s")
-hist(f_newcomb)
-qqnorm(f_newcomb)
-hist(s_newcomb)
-qqnorm(s_newcomb)
-boxplot(f_newcomb,s_newcomb)
+hist(f_newcomb, xlim=c(-50,50), ylim=c(0,0.1), prob=T)
+hist(s_newcomb, xlim=c(-50,50), ylim=c(0,0.1), prob=T)
+boxplot(f_newcomb,s_newcomb, main="Boxplot of f_newcomb and s_newcomb")
+qqchisq(f_newcomb, df = 1000, ylab="f_newcomb Sample Quantiles")
+qqline(f_newcomb, dist = function(p) qchisq(p, df = 1000))
+qqnorm(s_newcomb, ylab="s_newcomb Sample Quantiles")
+qqline(s_newcomb)
+
+est = median(f_newcomb) - median(s_newcomb)
 
 data = c(f_newcomb,s_newcomb)
 nx = length(f_newcomb)
 ny = length(s_newcomb)
+
 myteststat = function(z,m,n) {median(z[1:m])-median(z[(m+1):(m+n)])}
 B=1000
 permutationtval = numeric(B)
