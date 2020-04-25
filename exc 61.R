@@ -29,3 +29,28 @@ for(i in 1:B)
 pl = sum(permutationtval<=t)/B
 pr = sum(permutationtval>=t)/B
 pperm = 2*min(pl,pr)
+
+library('mvtnorm')
+samplebv = function(n) rmvnorm(n, mean = c(0,0), sigma = matrix(c(1,0.5,0.5,1), 2, 2))
+
+aresimulation=function(B,n)
+{
+  pvalkendall=numeric(B)
+  pvalspearman=numeric(B)
+  for(i in 1:B)
+  {
+    bvdatai=samplebv(n)
+    xs = bvdatai[,1]
+    ys = bvdatai[,2]
+    pvalkendall[i]=cor.test(xs,ys,method="k")$p.value
+    pvalspearman[i]=cor.test(xs,ys,method="s")$p.value
+
+  }
+  powerk=sum(pvalkendall<=0.05)/B
+  powers=sum(pvalspearman<=0.05)/B
+  rbind(c("kendall","spearman"),c(powerk,powers))
+}
+aresimulation(10000,50)[,1]
+aresimulation(10000,45)[,2]
+aresimulation(10000,50)[,2]
+aresimulation(10000,55)[,2]
